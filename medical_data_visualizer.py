@@ -57,7 +57,10 @@ def draw_heat_map():
     fig, ax = plt.subplots()
 
     # 15
-    sns.heatmap(corr, annot = True, vmin=-0.1, vmax=0.3, fmt=".1f", linewidths=.5, linecolor = "white",mask=mask, center= 0, square = True, annot_kws={"size":6})
+    sns.set(font_scale=.7)
+    sns.heatmap(corr, annot = True,vmin=-0.1, vmax=0.3, fmt=".1f", linewidths=.5, mask=mask, center= 0, square = True, annot_kws={"size":8})
+    ax.set_xticklabels(ax.get_xmajorticklabels(),fontsize = 5)
+    ax.set_yticklabels(ax.get_ymajorticklabels(),fontsize = 7)
 
     # 16
     fig.savefig('heatmap.png')
