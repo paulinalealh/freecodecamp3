@@ -25,23 +25,16 @@ def draw_cat_plot():
     # 6
     #df_cat["variable"] = df_cat["variable"].astype("category")
     df_cat = df_cat.groupby(["variable","cardio"]).value_counts()
-    
-    print(df_cat)
-    
-    
-    
-    
+    df_cat = df_cat.rename("total").reset_index()
 
     # 7
-
-
+    #sns.catplot(data= df_cat, x =df_cat["variable"], y=df_cat["total"], row= 1, col=df["cardio"], kind= "bar")
 
     # 8
-    fig = sns.catplot()
-
-
+    fig = sns.catplot(data= df_cat, x ="variable", y="total", col="cardio", kind= "bar", hue= "value", legend="brief")
+    
     # 9
-    #fig.savefig('catplot.png')
+    fig.savefig('catplot.png')
     return fig
 
 
